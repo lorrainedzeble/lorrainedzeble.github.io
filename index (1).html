@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorraine Dzeble — Analytics Portfolio</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #1f4e79;
+    --blue:   #2e75b6;
+    --light:  #e6f1fb;
+    --text:   #1a1a1a;
+    --muted:  #555;
+    --border: #d0d7de;
+    --bg:     #f6f8fa;
+    --white:  #ffffff;
+    --tag-bg: #eaf1fb;
+    --tag-tx: #1f4e79;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────────────────── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  header p.title {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .badge {
+    background: var(--tag-bg);
+    color: var(--tag-tx);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid #b5d4f4;
+  }
+  .header-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .header-links a {
+    font-size: 0.875rem;
+    color: var(--blue);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    background: var(--white);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .header-links a:hover { border-color: var(--blue); background: var(--light); }
+
+  /* ── Main ──────────────────────────────────────────────────────────────── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Project cards ─────────────────────────────────────────────────────── */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--blue); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+  .card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .card p.desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-tx);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .card-footer {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--blue); border-color: var(--blue); }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--navy);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover { background: var(--light); border-color: var(--blue); }
+
+  .card-meta {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── About ─────────────────────────────────────────────────────────────── */
+  .about {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .about strong { color: var(--text); }
+
+  /* ── Footer ────────────────────────────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="avatar">LD</div>
+  <h1>Lorraine Dzeble</h1>
+  <p class="title">Master of Management Analytics · Alberta School of Business · University of Alberta</p>
+  <div class="badges">
+    <span class="badge">Machine Learning</span>
+    <span class="badge">Data Visualization</span>
+    <span class="badge">Responsible AI</span>
+    <span class="badge">Business Analytics</span>
+    <span class="badge">Python · R · SQL</span>
+  </div>
+  <div class="header-links">
+    <a href="https://www.linkedin.com/in/lorrainedzeble" target="_blank">LinkedIn</a>
+    <a href="https://github.com/lorrainedzeble" target="_blank">GitHub</a>
+    <a href="mailto:lorrainedzeble@gmail.com">Email</a>
+  </div>
+</header>
+
+<!-- ── Main ───────────────────────────────────────────────────────────────── -->
+<main>
+
+  <p class="section-label">Projects</p>
+
+  <div class="projects">
+
+    <!-- Project 1: NBA -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏀</div>
+        <h2>NBA Player Salary Prediction & Contract Valuation</h2>
+      </div>
+      <p class="desc">
+        Predicts each NBA player's fair market salary from on-court statistics using XGBoost
+        regression and K-Means clustering. Applies the valuation model to the 2023 Boston Celtics
+        to validate real front-office decisions — Boston won the 2024 NBA Championship.
+      </p>
+      <div class="card-tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">K-Means</span>
+        <span class="tag">Optuna</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Sports Analytics</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary"
+           href="https://github.com/lorrainedzeble/nba-salary-prediction"
+           target="_blank">View on GitHub</a>
+        <a class="btn btn-secondary"
+           href="https://github.com/lorrainedzeble/nba-salary-prediction/blob/main/LORRAINE_DZEBLE_NBA_SALARY_VALUATION.ipynb"
+           target="_blank">Open Notebook</a>
+      </div>
+      <div class="card-meta">
+        MMA 602 — Machine Learning I &nbsp;·&nbsp; University of Alberta &nbsp;·&nbsp; 2025
+      </div>
+    </div>
+
+    <!-- Project 2: AI Hallucination -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <h2>AI Hallucination Cases in Legal Proceedings — Data Visualization</h2>
+      </div>
+      <p class="desc">
+        Analyzes a global dataset of 442 legal decisions involving AI-generated hallucinated
+        content (2023–2025). Cleans and standardizes the data, then produces 10 visualizations
+        revealing a 29× case surge, fabricated citations as the dominant failure mode, and a
+        significant AI tool transparency gap in legal filings.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">Visualization</span>
+        <span class="tag">matplotlib</span>
+        <span class="tag">seaborn</span>
+        <span class="tag">squarify</span>
+        <span class="tag">Python</span>
+        <span class="tag">Responsible AI</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary"
+           href="https://github.com/lorrainedzeble/ai-hallucination-visualization"
+           target="_blank">View on GitHub</a>
+        <a class="btn btn-secondary"
+           href="https://github.com/lorrainedzeble/ai-hallucination-visualization/blob/main/LORRAINE_DZEBLE_Charlotin_Hallucination_Cases_Visualization.ipynb"
+           target="_blank">Open Notebook</a>
+      </div>
+      <div class="card-meta">
+        MMA 603 — Data Visualization &nbsp;·&nbsp; University of Alberta &nbsp;·&nbsp; 2025
+      </div>
+    </div>
+
+  </div><!-- /.projects -->
+
+  <!-- About -->
+  <p class="section-label">About</p>
+  <div class="about">
+    <p>
+      <strong>Lorraine Dzeble</strong> is an MMA candidate at the Alberta School of Business,
+      University of Alberta, with 7+ years of prior experience in finance and audit at
+      Ernst &amp; Young Ghana. Her analytical work spans machine learning, data visualization,
+      healthcare analytics, responsible AI, and ESG/sustainability — with a consistent focus
+      on bridging technical skills with governance, ethics, and policy.
+    </p>
+    <br>
+    <p>
+      This portfolio is updated as new projects are completed. More projects coming soon —
+      including work in healthcare NLP, algorithmic fairness auditing, and supply chain analytics.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  Lorraine Dzeble &nbsp;·&nbsp; lorrainedzeble.github.io &nbsp;·&nbsp; Updated 2025
+</footer>
+
+</body>
+</html>
